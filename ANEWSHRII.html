@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Anushri's Birthday Countdown!</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+        #countdown {
+            font-size: 2em;
+            margin-top: 20px;
+        }
+        #message {
+            font-size: 1.5em;
+            margin-top: 10px;
+            color: #333;
+        }
+        #anushri-ted {
+            width: 300px; /* Adjust as needed */
+            margin: 20px auto;
+        }
+        #birthday-message {
+            font-size: 2.5em;
+            color: #ff69b4; /* Pink color */
+            font-weight: bold;
+            text-shadow: 2px 2px 4px #000000; /* Add a shadow for emphasis */
+        }
+    </style>
+</head>
+<body>
+    <h1>It's Almost Anushri's Birthday!</h1>
+    <img id="anushri-ted" src="file:///C:/Users/Snehal/Desktop/photo_2025-04-17_18-24-53.jpg" alt="Anushri and Ted">  <!-- Replace with an image! -->
+    <div id="countdown"></div>
+    <div id="message"></div>
+    <div id="birthday-message"></div>
+
+    <script>
+        // Set Anushri's birthday (YYYY-MM-DD)
+        const birthday = new Date("2025-04-28T00:00:00"); // Replace with her birth year!
+
+        function updateCountdown() {
+            const now = new Date();
+            const timeLeft = birthday.getTime() - now.getTime();
+
+            if (timeLeft <= 0) {
+                document.getElementById("countdown").innerHTML = "";
+                document.getElementById("message").innerHTML = "";
+                document.getElementById("birthday-message").innerHTML = "SURPRISEEE ANUSHRIIII! Happy Birthday, Anushri! Ted's got a surprise for you!";
+                return;
+            }
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML =
+                `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
+
+            let message = "";
+            if (days > 30) {
+                message = "Legend... wait for it... dary! Anushri's birthday is still a ways off, Ted. Patience! A surprise is brewing...";
+            } else if (days > 7) {
+                message = "Okay, Ted, things are getting serious. Anushri's birthday is coming up soon! Suit up! The surprise is getting closer...";
+            } else if (days > 1) {
+                message = "Ted, Ted, Ted! Anushri's birthday is almost here! Do you have the blue French horn ready? The surprise is almost ready!";
+            } else if (days === 1) {
+                message = "One. Day. Left. Ted, this is it! Make sure everything is perfect for Anushri! Get ready for the SURPRISE!";
+            } else {
+                message = "Get ready for the surprise!";
+            }
+
+            document.getElementById("message").innerHTML = message;
+        }
+
+        // Update the countdown every second
+        setInterval(updateCountdown, 1000);
+
+        // Initial call to updateCountdown
+        updateCountdown();
+    </script>
+</body>
+</html>
